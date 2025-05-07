@@ -1,0 +1,26 @@
+//insert update find delete 
+
+//insert: 
+db.student.insertOne({"Name":"ABC","AGE":29,"Gender":"Male"})
+db.student.insertMany([{"Name":"XYZ","AGE":28,"Gender":"Male"},
+                      {"Name":"LMN","AGE":29,"Gender":"Female"},
+                      {"Name":"OPQ","AGE":28,"Gender":"Female"}])
+
+// find:
+db.student.find()
+db.student.findOne({"Name":"ABC"})
+db.student.find({"Gender" : "Male" ,"AGE":{$gt:28}})
+
+// Update:
+db.student.updateOne({"Name":"ABC"},{$set:{"Name":"SSS"}})
+db.student.updateMany({"AGE":{$gt:0}},{$inc:{"AGE":1}})
+
+//replace:
+db.student.replaceOne({"Name":"SSS"},{"Name":"ABC","AGE":29,"Gender":"Male"})
+
+//delete:
+db.student.deleteOne({"Name":"ABC"})
+db.student.deleteMany({"AGE":{$lt:30}})
+
+//drop:
+db.student.drop()
