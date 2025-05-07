@@ -1,0 +1,26 @@
+file = ["This is a sample text file containing words and sentences",
+"It is used for demonstration purposes",
+"Girish is mentioned several times throughout the file",
+"Girish may appear at the beginning, middle, or end of a sentence"]
+
+def map(line):
+    cnt_words = {}
+    words = line.split()
+    for word in words:
+        cnt_words[word] = words.count(word)
+    return cnt_words
+
+def reduce(mapped_dict):
+    total = {}
+    for dict in mapped_dict:
+        for word in dict:
+            if word not in total.keys():
+                total[word] = 0
+            total[word] = total[word] + dict[word]
+    return total
+
+
+mapped_dict = []
+for line in file:
+    mapped_dict.append(map(line))
+print(reduce(mapped_dict))
