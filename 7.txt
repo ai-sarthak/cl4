@@ -1,0 +1,41 @@
+def map(stud):
+    student = stud[0]
+    english , maths ,science = stud[1],stud[2],stud[3]
+    total_grades = english + maths + science
+    return (student,total_grades)
+
+def reduce(stud):
+        student = stud[0]
+        total = stud[1]
+        if total > 100:
+            return (student,'A')
+        elif total < 100:
+            return (student, 'F')
+        else:
+            return(student,'Invalid')
+        
+        
+    
+
+
+
+def map_reduce(data):
+    grade = []
+    for stud in data:
+        grade.append(map(stud))
+    for stud in grade:
+        result = reduce(stud)
+        print(f"{result[0]} scored {result[1]} grade")
+    
+
+
+data = [
+    (1,80,20,70),
+    (2,75,30,20),
+    (3,0,60,20),
+    (4,92,80,85),
+    (5,4,50,30),
+    (6,33,0,50)
+]
+
+map_reduce(data)
