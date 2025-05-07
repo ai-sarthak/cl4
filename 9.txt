@@ -1,4 +1,4 @@
-//insert update find delete 
+//insert update find delete https://tinyurl.com/mongocl4
 
 //insert: 
 db.student.insertOne({"Name":"ABC","AGE":29,"Gender":"Male"})
