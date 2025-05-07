@@ -1,0 +1,19 @@
+data = sns.load_dataset('titanic')
+print(data.head())
+
+def map(data,gender):
+    dead = data[(data['survived'] == 0) & (data['sex'] == gender)]
+    return dead
+
+def reduce(data):
+    avg_age = data['age'].mean()
+    mode_class = data['class'].mode()
+    print(mode_class)
+    return avg_age,mode_class
+
+def map_reduce(data,gender):
+    dead_gender = map(data,gender)
+    age_dead_gender,mode_dead_gender = reduce(dead_gender)
+    print(age_dead_gender,mode_dead_gender)
+
+print(map_reduce(data,"female"))
